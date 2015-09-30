@@ -149,6 +149,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Release\Charbase.application" />
+    <None Include="bin\Release\Charbase.exe.config" />
+    <None Include="bin\Release\Charbase.exe.manifest" />
+    <None Include="bin\Release\Charbase.vshost.application" />
+    <None Include="bin\Release\Charbase.vshost.exe.config" />
+    <None Include="bin\Release\Charbase.vshost.exe.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,8 +182,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Release\Charbase.exe" />
+    <Content Include="bin\Release\Charbase.pdb" />
+    <Content Include="bin\Release\Charbase.vshost.exe" />
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.xml" />
     <Content Include="database-512.ico" />
     <None Include="Resources\database-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\app.publish\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
