@@ -23,8 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>10</ApplicationRevision>
-    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>0.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -65,6 +65,12 @@
   <PropertyGroup>
     <ApplicationIcon>database-512.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -101,6 +107,12 @@
     <Compile Include="frmAddCharacter.Designer.cs">
       <DependentUpon>frmAddCharacter.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEvent.Designer.cs">
+      <DependentUpon>frmAddEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +124,12 @@
     </Compile>
     <Compile Include="frmListCharacters.Designer.cs">
       <DependentUpon>frmListCharacters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListEvents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListEvents.Designer.cs">
+      <DependentUpon>frmListEvents.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListLocations.cs">
       <SubType>Form</SubType>
@@ -130,11 +148,17 @@
     <EmbeddedResource Include="frmAddCharacter.resx">
       <DependentUpon>frmAddCharacter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEvent.resx">
+      <DependentUpon>frmAddEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddLocation.resx">
       <DependentUpon>frmAddLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListCharacters.resx">
       <DependentUpon>frmListCharacters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListEvents.resx">
+      <DependentUpon>frmListEvents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListLocations.resx">
       <DependentUpon>frmListLocations.cs</DependentUpon>
@@ -149,13 +173,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="bin\Release\Charbase.application" />
-    <None Include="bin\Release\Charbase.exe.config" />
-    <None Include="bin\Release\Charbase.exe.manifest" />
-    <None Include="bin\Release\Charbase.vshost.application" />
-    <None Include="bin\Release\Charbase.vshost.exe.config" />
-    <None Include="bin\Release\Charbase.vshost.exe.manifest" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -182,17 +201,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Release\Charbase.exe" />
-    <Content Include="bin\Release\Charbase.pdb" />
-    <Content Include="bin\Release\Charbase.vshost.exe" />
-    <Content Include="bin\Release\Newtonsoft.Json.dll" />
-    <Content Include="bin\Release\Newtonsoft.Json.xml" />
     <Content Include="database-512.ico" />
     <None Include="Resources\database-512.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\app.publish\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

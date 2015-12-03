@@ -41,6 +41,9 @@
             this.locationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventstoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -57,6 +60,7 @@
             this.fileToolStripMenuItem,
             this.charactersToolStripMenuItem,
             this.locationsToolStripMenuItem,
+            this.eventstoolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -147,6 +151,29 @@
             this.listToolStripMenuItem2.Text = "List";
             this.listToolStripMenuItem2.Click += new System.EventHandler(this.listToolStripMenuItem2_Click);
             // 
+            // eventstoolStripMenuItem
+            // 
+            this.eventstoolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem1,
+            this.listToolStripMenuItem3});
+            this.eventstoolStripMenuItem.Name = "eventstoolStripMenuItem";
+            this.eventstoolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.eventstoolStripMenuItem.Text = "Events";
+            // 
+            // addToolStripMenuItem1
+            // 
+            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.addToolStripMenuItem1.Text = "Add";
+            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
+            // 
+            // listToolStripMenuItem3
+            // 
+            this.listToolStripMenuItem3.Name = "listToolStripMenuItem3";
+            this.listToolStripMenuItem3.Size = new System.Drawing.Size(181, 26);
+            this.listToolStripMenuItem3.Text = "List";
+            this.listToolStripMenuItem3.Click += new System.EventHandler(this.listToolStripMenuItem3_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -214,6 +241,9 @@
         private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.SaveFileDialog SFD;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventstoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem3;
     }
 }
 

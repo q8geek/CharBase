@@ -18,17 +18,17 @@ namespace Charbase
         public bool blDataSaved;
         public bool blQuitting;
         public bool blNotSavedQuit;
-        //public List<CharacterClass> lstCharacters;
-        //public List<LocationClass> lstLocations;
         public List<CharBaseClass> CBC;
 
         public void CheckStatus()
         {
-            lblStatus.Text = "Characters: " + CBC[0].Characters.Count;// lstCharacters.Count;
-            lblStatus.Text += "\nLocations: " + CBC[0].Locations.Count;//lstLocations.Count;
+            lblStatus.Text = "Characters: " + CBC[0].Characters.Count;
+            lblStatus.Text += "\nLocations: " + CBC[0].Locations.Count;
+            lblStatus.Text += "\nEvents: " + CBC[0].Events.Count;
 
             int PC = 0;
             int PL = 0;
+            int PE = 0;
             foreach(CharacterClass C in CBC[0].Characters)
             {
                 if (C.SavePicture != "")
@@ -39,8 +39,14 @@ namespace Charbase
                 if (L.SavePicture != "")
                     PL++;
             }
+            foreach (EventClass E in CBC[0].Events)
+            {
+                if (E.SavePicture != "")
+                    PE++;
+            }
             lblStatus.Text += "\n\nCharacters with a picture: " + PC.ToString();
             lblStatus.Text += "\nLocations with a picture: " + PL.ToString();
+            lblStatus.Text += "\nEvents with a picture: " + PE.ToString();
 
 
             if (blDataSaved)
@@ -76,8 +82,36 @@ namespace Charbase
             else
                 MessageBox.Show("Couldn't delete character.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             FLC.PopulateCharacters(CBC[0].Characters);
+            blDataSaved = false;
             CheckStatus();
         }
+
+        public void DeleteEvent(EventClass evtDel, frmListEvents  FLE)
+        {
+            bool Found = false;
+            if (evtDel != null)
+            {
+                foreach (EventClass EC in CBC[0].Events)
+                {
+                    if (!Found)
+                    {
+                        if (EC == evtDel)
+                            Found = true;
+                    }
+                }
+            }
+            if (Found)
+            {
+                CBC[0].Events.Remove(evtDel);
+                MessageBox.Show("Event has been deleted.", "Success");
+            }
+            else
+                MessageBox.Show("Couldn't delete Event.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            FLE.PopulateEvents(CBC[0].Events);
+            blDataSaved = false;
+            CheckStatus();
+        }
+
 
         public void DeleteLocation(LocationClass locDel, frmListLocations FLL)
         {
@@ -101,7 +135,37 @@ namespace Charbase
             else
                 MessageBox.Show("Couldn't delete location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             FLL.PopulateLocations(CBC[0].Locations);
+            blDataSaved = false;
             CheckStatus();
+        }
+
+        public void EditEvent(EventClass evtOld, EventClass evtUpdate, Image Picture, frmListEvents FLE)
+        {
+            bool Found = false;
+            if (evtOld != null)
+            {
+                foreach (EventClass EE in CBC[0].Events)
+                {
+                    if (!Found)
+                    {
+                        if (EE.Name == evtOld.Name)
+                        {
+                            EE.Name = evtUpdate.Name;
+                            EE.Description = evtUpdate.Description;
+                            EE.SavePicture = ImageToString(Picture);
+                            EE.Date = evtUpdate.Date;
+                            EE.Location = evtUpdate.Location;
+                            Found = true;
+                            blDataSaved = false;
+                        }
+                    }
+                }
+            }
+            if (Found)
+                MessageBox.Show("Event edit successful!", "Editing...");
+            else
+                MessageBox.Show("Failed to edit event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         public void EditCharacter(CharacterClass chrOld, CharacterClass chrUpdate, Image Picture, frmListCharacters FLC)
@@ -124,6 +188,7 @@ namespace Charbase
                             CC.Hometown = chrUpdate.Hometown;
                             CC.SavePicture = ImageToString(Picture);
                             Found = true;
+                            blDataSaved = false;
                         }
                     }
                 }
@@ -153,6 +218,7 @@ namespace Charbase
                             CC.Description = chrUpdate.Description;
                             CC.SavePicture = ImageToString(Picture);
                             Found = true;
+                            blDataSaved = false;
                         }
                     }
                 }
@@ -169,6 +235,15 @@ namespace Charbase
         {
             chrNew.SavePicture = ImageToString(Picture);
             CBC[0].Characters.Add(chrNew);
+            blDataSaved = false;
+            CheckStatus();
+        }
+
+        public void AddNewEvent(EventClass evtNew, Image Picture)
+        {
+            evtNew.SavePicture = ImageToString(Picture);
+            CBC[0].Events.Add(evtNew);
+            blDataSaved = false;
             CheckStatus();
         }
 
@@ -191,6 +266,7 @@ namespace Charbase
         {
             locNew.SavePicture = ImageToString(Picture);
             CBC[0].Locations.Add(locNew);
+            blDataSaved = false;
             CheckStatus();
         }
 
@@ -202,6 +278,7 @@ namespace Charbase
             CBC.Add(new CharBaseClass());
             CBC[0].Characters = new List<CharacterClass>();
             CBC[0].Locations = new List<LocationClass>();
+            CBC[0].Events= new List<EventClass>();
             blDataSaved = false;
             blQuitting = false;
             blNotSavedQuit = true;
@@ -270,6 +347,13 @@ namespace Charbase
                 string json = File.ReadAllText(FilePath);
                 CBC.Clear();
                 CBC = JsonConvert.DeserializeObject<List<CharBaseClass>>(json);
+                if (CBC[0].Events == null)
+                    CBC[0].Events = new List<EventClass>();
+                if (CBC[0].Characters == null)
+                    CBC[0].Characters = new List<CharacterClass>();
+                if (CBC[0].Locations == null)
+                    CBC[0].Locations = new List<LocationClass>();
+
                 ret = true;
             }
             catch (Exception EX)
@@ -289,6 +373,7 @@ namespace Charbase
                 CharBaseClass tmpCBC = new CharBaseClass();
                 tmpCBC.Characters = CBC[0].Characters;
                 tmpCBC.Locations = CBC[0].Locations;
+                tmpCBC.Events = CBC[0].Events;
                 CBC.Clear();
                 CBC.Add(tmpCBC);
 
@@ -302,6 +387,7 @@ namespace Charbase
             {
                 MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            blDataSaved = true;
             CheckStatus();
 
             return ret;
@@ -415,12 +501,38 @@ namespace Charbase
             About A = new About();
             A.Show();
         }
+
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            frmAddEvent F = new frmAddEvent();
+            F.Show();
+            F.MainForm = this;
+        }
+
+        private void listToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (CBC[0].Events.Count > 0)
+            {
+                this.Enabled = false;
+                frmListEvents F = new frmListEvents();
+                F.Show();
+                F.MainForm = this;
+
+                F.PopulateEvents(CBC[0].Events);
+            }
+            else
+            {
+                MessageBox.Show("There are no events. Please add events so you can list them.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
     public class CharBaseClass
     {
         public List<CharacterClass> Characters { get; set; }
         public List<LocationClass> Locations { get; set; }
+        public List<EventClass> Events { get; set; }
     }
 
     public class CharacterClass
@@ -444,7 +556,13 @@ namespace Charbase
         public string Address { get; set; }
         public string SavePicture { get; set; }
     }
-    
 
-
+    public class EventClass
+    {
+        public string Name { get; set; }
+        public string Date { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public string SavePicture { get; set; }
+    }
 }
