@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>0.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -202,6 +202,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="database-512.ico" />
+    <Content Include="publish\setup.exe" />
+    <None Include="publish\Application Files\Charbase_0_1_1_2\Charbase.application" />
+    <None Include="publish\Application Files\Charbase_0_1_1_2\Charbase.exe.config.deploy" />
+    <None Include="publish\Application Files\Charbase_0_1_1_2\Charbase.exe.deploy" />
+    <None Include="publish\Application Files\Charbase_0_1_1_2\Charbase.exe.manifest" />
+    <None Include="publish\Application Files\Charbase_0_1_1_2\database-512.ico.deploy" />
+    <None Include="publish\Application Files\Charbase_0_1_1_2\Newtonsoft.Json.dll.deploy" />
+    <None Include="publish\Charbase.application" />
     <None Include="Resources\database-512.png" />
   </ItemGroup>
   <ItemGroup />
