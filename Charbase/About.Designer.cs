@@ -52,23 +52,23 @@
             // 
             this.label2.Location = new System.Drawing.Point(13, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(398, 73);
+            this.label2.Size = new System.Drawing.Size(398, 93);
             this.label2.TabIndex = 1;
-            this.label2.Text = "CharBase v0.1 is a mini database application to keep track of characters and loca" +
-    "tions in stories or novels you\'re writing.\r\n\r\nFeatures:";
+            this.label2.Text = "CharBase v0.1 is a mini database application to keep track of characters, locatio" +
+    "ns, and events in stories or novels you\'re writing.\r\n\r\nFeatures:";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(30, 121);
+            this.label3.Location = new System.Drawing.Point(21, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(381, 60);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Add/Edit/List/Delete characters and locations.\r\nPictures for each item.\r\nLoad/Sav" +
-    "e .charbase files as JSON object with images inside them.";
+            this.label3.Text = "Add/Edit/List/Delete characters, locations, and events with pictures for each ite" +
+    "m.\r\nLoad/Save .charbase files as JSON object with images inside them.";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(13, 181);
+            this.label4.Location = new System.Drawing.Point(4, 201);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(398, 24);
             this.label4.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(30, 205);
+            this.label5.Location = new System.Drawing.Point(21, 225);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(381, 60);
             this.label5.TabIndex = 4;
@@ -84,7 +84,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(13, 251);
+            this.label6.Location = new System.Drawing.Point(4, 271);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(398, 24);
             this.label6.TabIndex = 5;
@@ -93,7 +93,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(33, 279);
+            this.linkLabel1.Location = new System.Drawing.Point(24, 299);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(124, 17);
             this.linkLabel1.TabIndex = 6;
@@ -104,7 +104,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Charbase.Properties.Resources.database_512;
-            this.pictureBox1.Location = new System.Drawing.Point(264, 184);
+            this.pictureBox1.Location = new System.Drawing.Point(255, 204);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 112);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
