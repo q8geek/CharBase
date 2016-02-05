@@ -15,4 +15,4 @@ Future features:
   2.  Display relations between different items.
   3.  Items tracking.
   
-You can contact me by sending an email to dev[at]q8geeks[dot]org. Let it be bugs, suggestions, anything! I'll be more than happy to receive emails :D
+You can contact me by sending an email to [dev@q8geeks.org](mailto:dev@q8geeks.org). Let it be bugs, suggestions, anything! I'll be more than happy to receive emails :D
